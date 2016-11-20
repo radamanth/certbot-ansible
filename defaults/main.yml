@@ -1,0 +1,11 @@
+---
+# defaults file for certbot-ansible
+
+# Those are the default vars you shoudl change
+domain_list: 
+- {name: "mydomain",  list: ["mydomain1.mycorp.fake", "mydomain2.mycorp.fake"] }
+- {name: "mydomain2",  list: ["mydomain1.othercorp.fake", "mydomain2.othercorp.fake"] }
+
+certbot_url: "https://dl.eff.org/certbot-auto"
+
+certbot_install_path: "/root"

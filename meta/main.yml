@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Tony Deboschère 
+  description: Small ansible role designed to install certbot, generate certs for some domain and automaticly renew them
+  company: www.neovia.fr
+  license: GPLv2
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  categories:
+  - development
+  - web
+dependencies: []
+  

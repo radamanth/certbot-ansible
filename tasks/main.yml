@@ -1,0 +1,25 @@
+---
+# tasks file for certbot-ansible
+
+- name: ensure destination directory exists
+  file: path="{{certbot_install_path}}"
+
+- name: Download cert-bot bin
+  get_url: 
+    url: "{{certbot_url}}"
+    dest: "{{certbot_install_path}}/certbot-auto"
+    mode: 0744
+
+- name: template create cert script
+  template: src=createCertificates.sh  dest="{{certbot_install_path}}/createCertificates.sh" mode=0700
+
+- name: create certificates for domain hosted by this machine
+  command: ./createCertificate.sh
+    chdir: "{{certbot_install_path}}"
+    
+- name: template create cert script
+  template: src=updateCertificates.sh  dest="{{certbot_install_path}}/updateCertificates.sh" mode=0700
+
+- name: Ensure certificate refresh by cron
+  cron:  name="ansible-refresh-certs" minute="0" hour="2" job="{{certbot_install_path}}/updateCertificates.sh > {{certbot_install_path}}/refreshCertificateLastRun.log"
+
