@@ -14,12 +14,13 @@
   template: src=createCertificates.sh  dest="{{certbot_install_path}}/createCertificates.sh" mode=0700
 
 - name: create certificates for domain hosted by this machine
-  command: ./createCertificate.sh
+  command: ./createCertificates.sh
+  args:
     chdir: "{{certbot_install_path}}"
     
 - name: template create cert script
-  template: src=updateCertificates.sh  dest="{{certbot_install_path}}/updateCertificates.sh" mode=0700
+  template: src=updateCertificates.sh  dest="{{certbot_install_path}}/updateCertificates" mode=0700
 
 - name: Ensure certificate refresh by cron
-  cron:  name="ansible-refresh-certs" minute="0" hour="2" job="{{certbot_install_path}}/updateCertificates.sh > {{certbot_install_path}}/refreshCertificateLastRun.log"
+  cron:  name="ansible-refresh-certs" minute="0" hour="2" job="{{certbot_install_path}}/updateCertificates > {{certbot_install_path}}/refreshCertificateLastRun.log"
 
