@@ -14,6 +14,8 @@ ubuntu
 Role Variables
 --------------
 
+
+````yml
 # List of domain hosted on target platform
 domain_list: 
 - {name: "mydomain",  list: ["mydomain1.mycorp.fake", "mydomain2.mycorp.fake"] }
@@ -24,6 +26,7 @@ certbot_url: "https://dl.eff.org/certbot-auto"
 
 # install path on the target platform
 certbot_install_path: "/root"
+```
 
 Dependencies
 ------------
