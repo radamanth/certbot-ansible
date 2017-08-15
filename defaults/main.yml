@@ -9,3 +9,5 @@ domain_list:
 certbot_url: "https://dl.eff.org/certbot-auto"
 
 certbot_install_path: "/root"
+
+cerbot_mail: "certbot@certbot"
